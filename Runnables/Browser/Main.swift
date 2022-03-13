@@ -30,4 +30,10 @@ extension Command {
   }
 }
 
-Command.Main.main()
+@main
+struct Main {
+    static func main() async throws {
+        print("Readings are: \("readings")")
+        Command.Main.main()
+    }
+}

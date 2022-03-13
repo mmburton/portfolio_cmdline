@@ -1,6 +1,6 @@
 //
 //  Dirs.swift
-//  Commands
+//  Runnables
 //
 //  Copyright © 2022 Dunegrass, LLC. All rights reserved.
 //
@@ -8,7 +8,7 @@
 import Foundation
 import ArgumentParser
 
-import portfolios
+import Portfolio
 
 extension Command {
     struct Dirs: ParsableCommand {
@@ -23,9 +23,8 @@ extension Command {
         var root: String
 
         func run() throws {
-            let dirs = Directory()
-            // print("\(Directory().run(args: root))")
-            print("looking at the root: '\(root)'")
+            let dirs = try? Portfolio.Directory().run(args: root)
+            print("got the directory result: '\(String(describing: dirs))'")
         }
     }
 }
