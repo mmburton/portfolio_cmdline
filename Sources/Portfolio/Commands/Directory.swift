@@ -7,8 +7,10 @@
 
 import Combine
 
-struct Directory {
-    func run(args: String) throws -> Bool {
+public struct Directory {
+    public init() {}
+
+    public func run(args: String) throws -> Bool {
         print("run the directory listing on '\(args)' form here")
         return true
     }

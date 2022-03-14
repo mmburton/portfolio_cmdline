@@ -4,12 +4,12 @@
 import PackageDescription
 
 let package = Package(
-    name: "Portfolios",
+    name: "Portfolio",
     platforms: [
         .macOS(.v10_15)
     ],
     products: [
-        .library(name: "portfolio", targets: ["portfolios"])
+        .library(name: "Portfolio", targets: ["Portfolio"])
     ],
     dependencies: [
         .package(name: "swift-argument-parser",
@@ -20,26 +20,26 @@ let package = Package(
         // Targets are the basic building blocks of a package. A target can define a module or a test suite.
         // Targets can depend on other targets in this package, and on products in packages this package depends on.
         .target(
-            name: "portfolios",
+            name: "Portfolio",
             dependencies: [
-                .product(name: "ArgumentParser", package: "swift-argument-parser"),
             ]
         ),
         .executableTarget(
-            name: "browser",
+            name: "Browser",
             dependencies: [
                 .product(name: "ArgumentParser", package: "swift-argument-parser"),
-                .target(name: "portfolios", condition: .none)
+                .target(name: "Portfolio", condition: .none)
             ],
-            path: "Runnables/browser"),
+            path: "Runnables/Browser"),
         .executableTarget(
-            name: "math",
+            name: "Math",
             dependencies: [
                 .product(name: "ArgumentParser", package: "swift-argument-parser"),
+                .target(name: "Portfolio", condition: .none)
             ],
-            path: "Runnables/math"),
+            path: "Runnables/Math"),
         .testTarget(
-            name: "portfoliosTests",
-            dependencies: ["portfolios"]),
+            name: "PortfolioTests",
+            dependencies: ["Portfolio"]),
     ]
 )
